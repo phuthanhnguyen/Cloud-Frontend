@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     console.log(json);
     var headers = new Headers();
     headers.append('Content-type','application/json');
-    this.http.post('http://localhost:3000/login',json,{headers: headers})
+    this.http.post('http://192.168.0.200:3000/login',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
