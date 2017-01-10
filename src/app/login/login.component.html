@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h3 class="text-center">Log In!</h3>
+    <hr>
+    <div>
+      <form>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="name" class="form-control" id="username" placeholder="username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success pull-right" (click)="login()" data-dismiss="modal">Login</button>
+          <br>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>

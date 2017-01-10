@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h3 class="text-center">Sign Up!</h3>
+    <hr>
+    <div>
+      <form>
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="name" class="form-control" id="username" placeholder="username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="password">Email:</label>
+          <input type="email" class="form-control" id="email" placeholder="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+        </div>
+      </form>
+      <div class="form-group">
+        <label for="lastname">Last Name:</label>
+        <input type="text" class="form-control" id="lastname" placeholder="Last name" [(ngModel)]="lastName" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="firstname">First Name:</label>
+        <input type="text" class="form-control" id="firstname" placeholder="First name" [(ngModel)]="firstName" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <label for="type">Type: </label>
+        <select id="type" [(ngModel)]="type" [ngModelOptions]="{standalone: true}">
+          <option>Free</option>
+          <option>Premium</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success pull-right" (click)="signup()" data-dismiss="modal">Signup</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>
