@@ -3,6 +3,7 @@ import {Http, Headers} from "@angular/http";
 import {Container} from "../models/container";
 import {SharedService} from "../app.shared";
 import {Router} from "@angular/router";
+import {timeout} from "rxjs/operator/timeout";
 
 
 @Component({
@@ -67,15 +68,16 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         data=> {
           console.log(data);
-          if (data.message==1)
+          if (data.message==1) {
             this.containerStatus[index] = 1;
             console.log(data.containerLink);
             setTimeout(function() {
               window.open(data.containerLink);
             }, 10000);
+          }
         },
         error=> console.log(error)
-      );
+      )
   }
 
   stopContainer = function(index){
