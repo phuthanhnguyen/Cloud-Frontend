@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Http, Headers} from "@angular/http";
 import {Container} from "../models/container";
 import {SharedService} from "../app.shared";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,7 +15,7 @@ export class DashboardComponent implements OnInit {
   containerStatus:number[]=[]; //0 if container is off, 1 if it's on
   backupTime:string[]=[];
 
-  constructor(private http: Http, private sharedService: SharedService) {
+  constructor(private http: Http, private sharedService: SharedService, private route: Router) {
     //test lacal
     // var container1 = new Container("Travaux pratique du C","C Platform","1");
     // var container2 = new Container("Travaux pratique du Java","Java Platform","2");
@@ -68,6 +69,7 @@ export class DashboardComponent implements OnInit {
           console.log(data);
           if (data.message==1)
             this.containerStatus[index] = 1;
+            window.open(data.containerLink);
         },
         error=> console.log(error)
       );
