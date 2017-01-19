@@ -73,7 +73,6 @@ export class DashboardComponent implements OnInit {
             setTimeout(function() {
               window.open(data.containerLink);
             }, 10000);
-            window.open(data.containerLink);
         },
         error=> console.log(error)
       );
