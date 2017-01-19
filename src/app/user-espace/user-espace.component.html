@@ -19,17 +19,17 @@
           <a routerLink="./dashboard" (click)="setTab(1)">DashBoard</a>
         </li>
         <li class="{{getTab(2)}}">
-          <a routerLink="./creatingcontainer" (click)="setTab(2)">Creating container</a>
+          <a routerLink="./creating-container" (click)="setTab(2)">Creating container</a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a routerLink="/logout">Logout</a></li>
+        <li><a (click)="logout()">Logout</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container center" >
+<div class="container" style="margin-top: 50px;" >
   <router-outlet></router-outlet>
 </div>

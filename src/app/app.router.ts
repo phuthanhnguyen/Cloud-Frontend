@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {HomeComponent} from "./home/home.component";
 import { UserEspaceComponent } from './user-espace/user-espace.component';
+import { CreatingContainerComponent } from './creating-container/creating-container.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'userespace', component: UserEspaceComponent,
     children: [
       {path: 'dashboard', component: DashboardComponent},
+      {path: 'creating-container', component: CreatingContainerComponent}
     ]
   }
 ]

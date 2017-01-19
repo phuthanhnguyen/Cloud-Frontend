@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
 import {SharedService} from "./app.shared";
 
 @Component({
@@ -10,14 +9,4 @@ import {SharedService} from "./app.shared";
 })
 export class AppComponent {
   selectedTab:number=1;
-
-  setTab = function(tab: number){
-    this.selectedTab = tab;
-  }
-
-  getTab = function(tab: number){
-    if (this.selectedTab == tab){
-      return "active";
-    } else return "";
-  }
 }
