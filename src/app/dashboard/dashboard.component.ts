@@ -69,6 +69,10 @@ export class DashboardComponent implements OnInit {
           console.log(data);
           if (data.message==1)
             this.containerStatus[index] = 1;
+            console.log(data.containerLink);
+            setTimeout(function() {
+              window.open(data.containerLink);
+            }, 10000);
             window.open(data.containerLink);
         },
         error=> console.log(error)
