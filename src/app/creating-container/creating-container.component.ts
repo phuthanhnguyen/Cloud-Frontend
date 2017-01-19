@@ -10,6 +10,8 @@ import {SharedService} from "../app.shared";
 export class CreatingContainerComponent implements OnInit {
   containerName: string = null;
   containerType: string = null;
+  containerPassword: string = null;
+  created:number=0;
 
   constructor(private http: Http, private sharedService:SharedService) { }
 
@@ -29,9 +31,8 @@ export class CreatingContainerComponent implements OnInit {
       .subscribe(
         data=> {
           console.log(data);
-          if (data != {}){
-            this.containers = data;
-          }
+          this.created=1;
+          this.containerPassword = data.password;
         },
         error=> console.log(error)
       );

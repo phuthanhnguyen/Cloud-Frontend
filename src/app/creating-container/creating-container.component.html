@@ -24,6 +24,12 @@
         </div>
       </form>
     </div>
+    <div class="panel panel-default" *ngIf="created">
+    <div class="panel-body">
+      You container is created
+      Your password is: {{containerPassword}}
+    </div>
+  </div>
   </div>
   <div class="col-md-4"></div>
 </div>
