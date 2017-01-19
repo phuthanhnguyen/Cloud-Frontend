@@ -24,13 +24,13 @@ export class UserEspaceComponent implements OnInit {
 
   logout = function(){
     this.sharedService.setUser(null);
-    location.href = "http://localhost:4200/";
+    location.href = "http://213.32.27.235:8200/";
   }
 
   ngOnInit() {
-    /*if (this.sharedService.getUser() == null){
-      location.href = 'http://localhost:4200/';
-    }*/
+    if (this.sharedService.getUser() == null){
+      location.href = 'http://213.32.27.235:8200/';
+    }
   }
 
 }

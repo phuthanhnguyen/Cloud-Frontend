@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h3 class="text-center">Create your container</h3>
+    <hr>
+    <div>
+      <form>
+        <div class="form-group">
+          <label for="containerName">Name:</label>
+          <input type="text" class="form-control" id="containerName" placeholder="Name of container" [(ngModel)]="containerName" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <label for="containerType">Type:</label>
+          <select class="form-control" id="containerType" [(ngModel)]="containerType" [ngModelOptions]="{standalone: true}">
+            <option>C Platform</option>
+            <option>Java Platform</option>
+            <option>Big data Platform</option>
+            <option>Web Development</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-success pull-right" (click)="createContainer()" data-dismiss="modal">Create</button>
+          <br>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>

@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
     var headers = new Headers();
     headers.append('Content-type','application/json');
     //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
-    this.http.post('http://localhost:3000/getContainers',json,{headers: headers})
+    this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
@@ -61,7 +61,7 @@ export class DashboardComponent implements OnInit {
     var headers = new Headers();
     headers.append('Content-type','application/json');
     //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
-    this.http.post('http://localhost:3000/startContainer',json,{headers: headers})
+    this.http.post('http://213.32.27.235:8201/startContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit {
     var headers = new Headers();
     headers.append('Content-type','application/json');
     //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
-    this.http.post('http://localhost:3000/stopContainer',json,{headers: headers})
+    this.http.post('http://213.32.27.235:8201/stopContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
@@ -105,7 +105,7 @@ export class DashboardComponent implements OnInit {
     var headers = new Headers();
     headers.append('Content-type','application/json');
     //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
-    this.http.post('http://localhost:3000/delContainer',json,{headers: headers})
+    this.http.post('http://213.32.27.235:8201/delContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
@@ -127,7 +127,7 @@ export class DashboardComponent implements OnInit {
     var headers = new Headers();
     headers.append('Content-type','application/json');
     //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
-    this.http.post('http://localhost:3000/backupContainer',json,{headers: headers})
+    this.http.post('http://213.32.27.235:8201/backupContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
@@ -141,8 +141,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.sharedService.getUser() == null)
-      location.href="http://localhost:4200";
+    if (this.sharedService.getUser() == null){
+      location.href = 'http://213.32.27.235:8200/';
+    }
   }
 
 }
