@@ -3,7 +3,6 @@ import {Http, Headers} from "@angular/http";
 import {Container} from "../models/container";
 import {SharedService} from "../app.shared";
 import {Router} from "@angular/router";
-import {timeout} from "rxjs/operator/timeout";
 
 
 @Component({
@@ -13,19 +12,22 @@ import {timeout} from "rxjs/operator/timeout";
 })
 export class DashboardComponent implements OnInit {
   containers: Container[] =[];
-  containerStatus:number[]=[]; //0 if container is off, 1 if it's on
   backupTime:string[]=[];
+  containerLink:string=null;
+  changeState:boolean[]=[];
 
   constructor(private http: Http, private sharedService: SharedService, private route: Router) {
     //test lacal
-    // var container1 = new Container("Travaux pratique du C","C Platform","1");
-    // var container2 = new Container("Travaux pratique du Java","Java Platform","2");
-    // var container3 = new Container("Travaux pratique du Big Data","Big data Platform","3");
-    // var container4 = new Container("Travaux pratique du Web Development","Web Platform","4");
-    // this.containers = [container1,container2,container3,container4];
+    /*var container1 = new Container("Travaux pratique du C","C Platform","1",0);
+    var container2 = new Container("Travaux pratique du Java","Java Platform","2",0);
+    var container3 = new Container("Travaux pratique du Big Data","Big data Platform","3",0);
+    var container4 = new Container("Travaux pratique du Web Development","Web Platform","4",0);
+    this.containers = [container1,container2,container3,container4];*/
 
     this.getContainerList();
-    console.log(this.containerStatus);
+/*    for (var i=0;i<this.containers.length;i++){
+      this.changeState[i]=false;
+    }*/
   }
 
   getContainerList = function(){
@@ -44,7 +46,7 @@ export class DashboardComponent implements OnInit {
             for (let i=0; i<data.length; i++){
               this.containers.push(new Container(data[i].name, data[i].type,data[i].id,data[i].state));
               console.log(data[i].state);
-              this.containerStatus.push(data[i].state);
+              this.changeState.push(false);
               this.backupTime.push("");
             }
           }
@@ -69,16 +71,24 @@ export class DashboardComponent implements OnInit {
         data=> {
           console.log(data);
           if (data.message==1) {
-            this.containerStatus[index] = 1;
-            console.log(data.containerLink);
-            setTimeout(function() {
-              window.open(data.containerLink);
-            }, 10000);
+            this.containers[index].state = 1;
+            this.containerLink = data.containerLink;
           }
         },
         error=> console.log(error)
-      )
+      );
+    //handler function
+    var handleStart = function(changeStateTab:boolean[], containerTab: Container[], index: number){
+      changeStateTab[index] = false;
+      containerTab[index].state = 1;
+      window.open(this.containerLink);
+    }
+
+    this.changeState[index] = true;
+    setTimeout(() =>{handleStart(this.changeState,this.containers,index);}, 10000);
   }
+
+
 
   stopContainer = function(index){
     //send delete request to server
@@ -95,11 +105,16 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         data=> {
           console.log(data);
-          if (data.message==1)
-            this.containerStatus[index] = 0;
         },
         error=> console.log(error)
       );
+
+    this.changeState[index] = true;
+    setTimeout(() => {
+      //window.open(this.containerLink);
+      this.changeState[index] = false;
+      this.containers[index].state=0;
+    }, 10000);
   }
 
   deleteContainer = function(index){

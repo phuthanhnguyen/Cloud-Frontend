@@ -15,23 +15,29 @@
       </tr>
       </thead>
       <tbody *ngFor="let container of containers; let index = index;">
-      <tr>
-        <th scope="row">{{index+1}}</th>
-        <td>{{container.name}}</td>
-        <td>{{container.type}}</td>
-        <td class="text-center">
-          <button class="btn btn-success btn-xs" (click)="startContainer(index)" *ngIf="containerStatus[index]==0">Start</button>
-          <button class="btn btn-danger btn-xs" (click)="stopContainer(index)" *ngIf="containerStatus[index]==1">Stop</button>
-        </td>
-        <td class="text-center">
-          <button class="btn btn-danger btn-xs" (click)="deleteContainer(index)">Delete</button>
-        </td>
-        <td class="text-center">
-          <button class="btn btn-primary btn-xs" (click)="backupContainer(index)">Back up</button>
-          {{backupTime[index]}}
-        </td>
-      </tr>
+        <tr>
+          <th scope="row">{{index+1}}</th>
+          <td>{{container.name}}</td>
+          <td>{{container.type}}</td>
+          <td class="text-center">
+            <button class="btn btn-success btn-xs" (click)="startContainer(index)" *ngIf="container.state==0 && !changeState[index]">Start</button>
+            <button class="btn btn-danger btn-xs" (click)="stopContainer(index)" *ngIf="container.state==1 && !changeState[index]">Stop</button>
+            <button class="btn btn-primary btn-xs" [disabled]="true" *ngIf="changeState[index]">
+              <i class="fa fa-spinner fa-pulse fa-1x fa-fw"></i>
+              <span>Waitting...</span>
+            </button>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-danger btn-xs" (click)="deleteContainer(index)">Delete</button>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-primary btn-xs" (click)="backupContainer(index)">Back up</button>
+            {{backupTime[index]}}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
+
+
 </div>

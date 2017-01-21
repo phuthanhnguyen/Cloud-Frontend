@@ -29,7 +29,7 @@ export class UserEspaceComponent implements OnInit {
 
   ngOnInit() {
     if (this.sharedService.getUser() == null){
-      location.href = 'http://213.32.27.235:8200/';
+      //location.href = 'http://213.32.27.235:8200/';
     }
   }
 
