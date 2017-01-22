@@ -26,14 +26,21 @@
     </div>
     <br>
     <br>
-    <div class="panel panel-default" *ngIf="created==1">
-    <div class="panel-body">
-      You container is created!
-      <br>
-      Your password is:
-      <span style="font-weight: bold;"> {{containerPassword}}</span>
-    </div>
-  </div>
   </div>
   <div class="col-md-4"></div>
+</div>
+<div class="row" *ngIf="created==1">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">Your container is created successfully</div>
+      <div class="panel-body">
+        You container is created!
+        <br>
+        Your password is:
+        <span style="font-weight: bold;"> {{containerPassword}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
 </div>

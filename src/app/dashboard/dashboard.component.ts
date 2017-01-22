@@ -15,19 +15,21 @@ export class DashboardComponent implements OnInit {
   backupTime:string[]=[];
   containerLink:string=null;
   changeState:boolean[]=[];
+  infoShow:boolean=false;
+  containerCible: Container = null;
 
   constructor(private http: Http, private sharedService: SharedService, private route: Router) {
     //test lacal
-    /*var container1 = new Container("Travaux pratique du C","C Platform","1",0);
+    var container1 = new Container("Travaux pratique du C","C Platform","1",0);
     var container2 = new Container("Travaux pratique du Java","Java Platform","2",0);
     var container3 = new Container("Travaux pratique du Big Data","Big data Platform","3",0);
     var container4 = new Container("Travaux pratique du Web Development","Web Platform","4",0);
-    this.containers = [container1,container2,container3,container4];*/
+    this.containers = [container1,container2,container3,container4];
 
-    this.getContainerList();
-/*    for (var i=0;i<this.containers.length;i++){
+    //this.getContainerList();
+    for (var i=0;i<this.containers.length;i++){
       this.changeState[i]=false;
-    }*/
+    }
   }
 
   getContainerList = function(){
@@ -35,7 +37,6 @@ export class DashboardComponent implements OnInit {
     console.log(json);
     var headers = new Headers();
     headers.append('Content-type','application/json');
-    //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
     this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
@@ -64,7 +65,6 @@ export class DashboardComponent implements OnInit {
     console.log(json);
     var headers = new Headers();
     headers.append('Content-type','application/json');
-    //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
     this.http.post('http://213.32.27.235:8201/startContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
@@ -99,7 +99,6 @@ export class DashboardComponent implements OnInit {
     console.log(json);
     var headers = new Headers();
     headers.append('Content-type','application/json');
-    //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
     this.http.post('http://213.32.27.235:8201/stopContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
@@ -126,7 +125,6 @@ export class DashboardComponent implements OnInit {
     console.log(json);
     var headers = new Headers();
     headers.append('Content-type','application/json');
-    //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
     this.http.post('http://213.32.27.235:8201/delContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
@@ -148,7 +146,6 @@ export class DashboardComponent implements OnInit {
     });
     var headers = new Headers();
     headers.append('Content-type','application/json');
-    //this.http.post('http://213.32.27.235:8201/getContainers',json,{headers: headers})
     this.http.post('http://213.32.27.235:8201/backupContainer',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
@@ -160,6 +157,11 @@ export class DashboardComponent implements OnInit {
         },
         error=> console.log(error)
       );
+  }
+
+  showInfo = function(index){
+    this.infoShow = true;
+    this.containerCible = this.containers[index];
   }
 
   ngOnInit() {

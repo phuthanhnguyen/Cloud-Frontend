@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default" xmlns:Name="http://www.w3.org/1999/xhtml">
   <div class="panel-heading">
     <h3 class="panel-title">List of containers:</h3>
   </div>
@@ -12,6 +12,7 @@
         <th class="text-center">Start/Stop</th>
         <th class="text-center">Delete</th>
         <th class="text-center">Backup</th>
+        <th class="text-center">Info</th>
       </tr>
       </thead>
       <tbody *ngFor="let container of containers; let index = index;">
@@ -34,10 +35,36 @@
             <button class="btn btn-primary btn-xs" (click)="backupContainer(index)">Back up</button>
             {{backupTime[index]}}
           </td>
+          <td class="text-center">
+            <button class="btn btn-primary btn-xs" (click)="showInfo(index)">Monitoring</button>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
+</div>
 
-
+<div class="panel panel-info" *ngIf="infoShow">
+  <div class="panel-heading">
+    <h3 class="panel-title">Check container info:</h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <span style="font-weight: bold">Name: </span>
+      <span>{{containerCible.name}}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold">Container ID: </span>
+      <span>{{containerCible.id}}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold">Type: </span>
+      <span>{{containerCible.type}}</span>
+    </p>
+    <p>
+      <span style="font-weight: bold">State: </span>
+      <span *ngIf="containerCible.state == 1">Activated</span>
+      <span *ngIf="containerCible.state == 0">Disabled</span>
+    </p>
+  </div>
 </div>
