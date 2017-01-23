@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     var headers = new Headers();
     headers.append('Content-type','application/json');
     //this.http.post('http://213.32.27.235:8201/signup',json,{headers: headers})
-    this.http.post('213.32.27.235:8201/signup',json,{headers: headers})
+    this.http.post('http://213.32.27.235:8201/signup',json,{headers: headers})
       .map(res => res.json())
       .subscribe(
         data=> {
