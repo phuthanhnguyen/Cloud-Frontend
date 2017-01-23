@@ -113,7 +113,7 @@ export class DashboardComponent implements OnInit {
       //window.open(this.containerLink);
       this.changeState[index] = false;
       this.containers[index].state=0;
-    }, 12000);
+    }, 15000);
   }
 
   deleteContainer = function(index){
