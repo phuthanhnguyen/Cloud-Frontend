@@ -81,6 +81,7 @@ export class DashboardComponent implements OnInit {
     var handleStart = function(changeStateTab:boolean[], containerTab: Container[], index: number){
       changeStateTab[index] = false;
       containerTab[index].state = 1;
+      console.log(this.containerLink)
       window.open(this.containerLink);
     }
 
