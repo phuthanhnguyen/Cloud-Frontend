@@ -44,6 +44,7 @@ export class DashboardComponent implements OnInit {
           console.log(data);
           this.containers=[];
           if (data != {}){
+            console.log(data);
             for (let i=0; i<data.length; i++){
               this.containers.push(new Container(data[i].name, data[i].type,data[i].id,data[i].state,data[i].containerLink));
               this.changeState.push(false);
