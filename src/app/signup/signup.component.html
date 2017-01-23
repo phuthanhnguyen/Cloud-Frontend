@@ -40,3 +40,18 @@
   </div>
   <div class="col-md-4"></div>
 </div>
+<div class="row" *ngIf="signedUp">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="panel panel-success">
+      <div class="panel-heading">Your account is created successfully</div>
+      <div class="panel-body">
+        You account is created!
+        <br>
+        Your username is:
+        <span style="font-weight: bold;"> {{username}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3"></div>
+</div>

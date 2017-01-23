@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   lastName:string=null;
   firstName:string=null;
   type:string=null;
+  signedUp:boolean=false;
 
   constructor(private http: Http) { }
 
@@ -29,6 +30,12 @@ export class SignupComponent implements OnInit {
       .subscribe(
         data=> {
           console.log(data);
+          this.signedUp = true;
+          this.email=null;
+          this.password=null;
+          this.lastName=null;
+          this.firstName=null;
+          this.type=null;
         },
         error=> console.log(error)
       );
