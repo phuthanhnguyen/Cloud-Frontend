@@ -166,6 +166,10 @@ export class DashboardComponent implements OnInit {
     this.containerCible = this.containers[index];
   }
 
+  openUrl(index){
+    window.open(this.containers[index].link)  ;
+  }
+
   ngOnInit() {
     if (this.sharedService.getUser() == null){
       location.href = 'http://213.32.27.235:8200/';
