@@ -45,8 +45,7 @@ export class DashboardComponent implements OnInit {
           this.containers=[];
           if (data != {}){
             for (let i=0; i<data.length; i++){
-              this.containers.push(new Container(data[i].name, data[i].type,data[i].id,data[i].state));
-              console.log(data[i].state);
+              this.containers.push(new Container(data[i].name, data[i].type,data[i].id,data[i].state,null));
               this.changeState.push(false);
               this.backupTime.push("");
             }
@@ -72,7 +71,7 @@ export class DashboardComponent implements OnInit {
           console.log(data);
           if (data.message==1) {
             this.containers[index].state = 1;
-            this.containerLink = data.containerLink;
+            this.containers[index].link = data.containerLink;
           }
         },
         error=> console.log(error)
@@ -86,8 +85,8 @@ export class DashboardComponent implements OnInit {
     this.changeState[index] = true;
     setTimeout(() =>{
       handleStart(this.changeState,this.containers,index);
-      console.log(this.containerLink)
-      window.open(this.containerLink);
+      console.log(this.containers[index].link)
+      window.open(this.containers[index].link);
     }, 12000);
   }
 
