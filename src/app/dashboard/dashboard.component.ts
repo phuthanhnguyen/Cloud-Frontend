@@ -20,16 +20,16 @@ export class DashboardComponent implements OnInit {
 
   constructor(private http: Http, private sharedService: SharedService, private route: Router) {
     //test lacal
-    var container1 = new Container("Travaux pratique du C","C Platform","1",0);
+    /*var container1 = new Container("Travaux pratique du C","C Platform","1",0);
     var container2 = new Container("Travaux pratique du Java","Java Platform","2",0);
     var container3 = new Container("Travaux pratique du Big Data","Big data Platform","3",0);
     var container4 = new Container("Travaux pratique du Web Development","Web Platform","4",0);
-    this.containers = [container1,container2,container3,container4];
+    this.containers = [container1,container2,container3,container4];*/
 
-    //this.getContainerList();
-    for (var i=0;i<this.containers.length;i++){
+    this.getContainerList();
+    /*for (var i=0;i<this.containers.length;i++){
       this.changeState[i]=false;
-    }
+    }*/
   }
 
   getContainerList = function(){
@@ -113,7 +113,7 @@ export class DashboardComponent implements OnInit {
       //window.open(this.containerLink);
       this.changeState[index] = false;
       this.containers[index].state=0;
-    }, 10000);
+    }, 12000);
   }
 
   deleteContainer = function(index){
