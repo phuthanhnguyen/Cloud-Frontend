@@ -85,7 +85,7 @@ export class DashboardComponent implements OnInit {
     }
 
     this.changeState[index] = true;
-    setTimeout(() =>{handleStart(this.changeState,this.containers,index);}, 10000);
+    setTimeout(() =>{handleStart(this.changeState,this.containers,index);}, 12000);
   }
 
 
